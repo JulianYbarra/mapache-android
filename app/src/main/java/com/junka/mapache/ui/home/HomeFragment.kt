@@ -1,0 +1,7 @@
+package com.junka.mapache.ui.home
+
+import androidx.fragment.app.Fragment
+import com.junka.mapache.R
+
+class HomeFragment : Fragment(R.layout.fragment_home) {
+}
