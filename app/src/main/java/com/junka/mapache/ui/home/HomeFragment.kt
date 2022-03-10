@@ -13,20 +13,23 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
-    private val viewModel: HomeViewModel  by viewModels()
-    private val animeAdapter : AnimeAdapter by lazy { AnimeAdapter() { anime ->
-        val action = HomeFragmentDirections.actionHomeDestToAnimeDetailDest(anime)
-        findNavController().navigate(action)
-    } }
+    private val viewModel: HomeViewModel by viewModels()
+    lateinit var homeState: HomeState
+
+    private val animeAdapter: AnimeAdapter by lazy {
+        AnimeAdapter() { anime -> homeState.onAnimeClicked(anime) }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        homeState = buildHomeState()
 
         val binding = FragmentHomeBinding.bind(view).apply {
             recycler.adapter = animeAdapter
         }
 
-        viewLifecycleOwner.launchAndCollect(viewModel.state){ binding.updateUI(it)}
+        viewLifecycleOwner.launchAndCollect(viewModel.state) { binding.updateUI(it) }
     }
 
     private fun FragmentHomeBinding.updateUI(state: HomeViewModel.UiState) {
