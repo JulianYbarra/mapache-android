@@ -11,7 +11,9 @@ import com.junka.mapache.common.loadUrl
 import com.junka.mapache.data.model.Document
 import com.junka.mapache.databinding.ViewAnimeItemBinding
 
-class AnimeAdapter : ListAdapter<Document, AnimeAdapter.ViewHolder>(
+class AnimeAdapter(
+    val listener : (anime : Document) -> Unit
+) : ListAdapter<Document, AnimeAdapter.ViewHolder>(
     basicDiffUtil { aOld, aNew -> aOld == aNew  }) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,6 +24,7 @@ class AnimeAdapter : ListAdapter<Document, AnimeAdapter.ViewHolder>(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
+        holder.itemView.setOnClickListener { listener(item) }
     }
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view){

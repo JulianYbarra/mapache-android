@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.junka.mapache.R
 import com.junka.mapache.common.launchAndCollect
 import com.junka.mapache.databinding.FragmentHomeBinding
@@ -13,8 +14,10 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val viewModel: HomeViewModel  by viewModels()
-
-    private val animeAdapter : AnimeAdapter by lazy { AnimeAdapter() }
+    private val animeAdapter : AnimeAdapter by lazy { AnimeAdapter() { anime ->
+        val action = HomeFragmentDirections.actionHomeDestToAnimeDetailDest(anime)
+        findNavController().navigate(action)
+    } }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -22,6 +25,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val binding = FragmentHomeBinding.bind(view).apply {
             recycler.adapter = animeAdapter
         }
+
         viewLifecycleOwner.launchAndCollect(viewModel.state){ binding.updateUI(it)}
     }
 
