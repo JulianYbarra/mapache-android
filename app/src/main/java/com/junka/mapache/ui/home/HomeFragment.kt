@@ -2,7 +2,6 @@ package com.junka.mapache.ui.home
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.junka.mapache.R
@@ -27,7 +26,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun FragmentHomeBinding.updateUI(state: HomeViewModel.UiState) {
-        progressBar.isVisible = state.loading
-        animeAdapter.submitList(state.animes)
+        loading = state.loading
+        animes = state.animes
     }
 }

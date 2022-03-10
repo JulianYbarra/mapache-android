@@ -29,11 +29,7 @@ class AnimeAdapter : ListAdapter<Document, AnimeAdapter.ViewHolder>(
         private val binding = ViewAnimeItemBinding.bind(view)
 
         fun bind(document: Document) = with(binding){
-            cover.loadUrl(document.coverImage)
-            title.text = document.titles.en
-            description.text = document.descriptions.en
-            episodes.text = "Episodes : ${document.episodesCount}"
-            score.text = "Score : ${document.score}"
+            anime = document
         }
     }
 
