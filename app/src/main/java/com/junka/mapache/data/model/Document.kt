@@ -11,13 +11,13 @@ data class Document(
     @SerializedName("banner_image")
     val bannerImage: String,
     @SerializedName("cover_color")
-    val coverColor: String,
+    val coverColor: String?,
     @SerializedName("cover_image")
     val coverImage: String,
     @SerializedName("descriptions")
     val descriptions: Descriptions,
     @SerializedName("end_date")
-    val endDate: String,
+    val endDate: String?,
     @SerializedName("episode_duration")
     val episodeDuration: Int,
     @SerializedName("episodes_count")
@@ -25,7 +25,7 @@ data class Document(
     @SerializedName("format")
     val format: Int,
     @SerializedName("genres")
-    val genres: List<String>,
+    val genres: List<String>?,
     @SerializedName("hasCoverImage")
     val hasCoverImage: Boolean,
     @SerializedName("id")
@@ -45,7 +45,7 @@ data class Document(
     @SerializedName("season_year")
     val seasonYear: Int,
     @SerializedName("start_date")
-    val startDate: String,
+    val startDate: String?,
     @SerializedName("status")
     val status: Int,
     @SerializedName("titles")
@@ -53,7 +53,7 @@ data class Document(
     @SerializedName("tmdb_id")
     val tmdbId: Int,
     @SerializedName("trailer_url")
-    val trailerUrl: String,
+    val trailerUrl: String?,
     @SerializedName("weekly_airing_day")
     val weeklyAiringDay: Int
 ) : Parcelable
