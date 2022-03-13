@@ -1,6 +1,6 @@
 package com.junka.mapache.data.remote
 
-import com.junka.mapache.data.model.AniResult
+import com.junka.mapache.data.remote.model.AniResult
 import retrofit2.http.GET
 
 interface AniService {

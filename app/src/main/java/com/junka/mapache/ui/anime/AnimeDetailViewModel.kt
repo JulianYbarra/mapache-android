@@ -2,7 +2,7 @@ package com.junka.mapache.ui.anime
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.junka.mapache.data.model.Document
+import com.junka.mapache.data.model.Anime
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -19,7 +19,7 @@ class AnimeDetailViewModel @Inject constructor(
 
     class UiState(
         val loading: Boolean = false,
-        val anime: Document
+        val anime: Anime
     )
 
     private val _state = MutableStateFlow(UiState(false, anime))

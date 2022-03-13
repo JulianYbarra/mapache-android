@@ -5,5 +5,6 @@ import com.junka.mapache.data.DataSource
 class AnimeRepository(
     private val dataSource: DataSource
 ) {
-    suspend fun getAnimes() = dataSource.getAnimes()
+    fun getAnimes() = dataSource.animes
+    suspend fun refreshAnimes() = dataSource.requestAnime()
 }

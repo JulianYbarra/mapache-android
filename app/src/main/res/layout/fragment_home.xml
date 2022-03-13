@@ -5,7 +5,7 @@
 
     <data>
         <import type="java.util.List"/>
-        <import type="com.junka.mapache.data.model.Document"/>
+        <import type="com.junka.mapache.data.model.Anime"/>
 
         <variable
             name="loading"
@@ -13,7 +13,7 @@
 
         <variable
             name="animes"
-            type="List&lt;Document>" />
+            type="List&lt;Anime>" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

@@ -1,4 +1,4 @@
-package com.junka.mapache.data.model
+package com.junka.mapache.data.remote.model
 
 
 import com.google.gson.annotations.SerializedName

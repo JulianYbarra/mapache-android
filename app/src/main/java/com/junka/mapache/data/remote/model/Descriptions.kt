@@ -1,10 +1,7 @@
-package com.junka.mapache.data.model
+package com.junka.mapache.data.remote.model
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 data class Descriptions(
     @SerializedName("en")
     val en: String,
@@ -13,5 +10,8 @@ data class Descriptions(
     @SerializedName("it")
     val it: String?,
     @SerializedName("jp")
-    val jp: String?
-) : Parcelable
+    val jp: String?)
+
+fun Descriptions.toDescription() : String{
+    return en ?: jp ?: ""
+}

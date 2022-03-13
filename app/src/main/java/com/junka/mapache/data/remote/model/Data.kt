@@ -1,7 +1,8 @@
-package com.junka.mapache.data.model
+package com.junka.mapache.data.remote.model
 
 
 import com.google.gson.annotations.SerializedName
+import com.junka.mapache.data.model.Anime
 
 data class Data(
     @SerializedName("count")

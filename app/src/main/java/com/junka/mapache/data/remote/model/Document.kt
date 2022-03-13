@@ -1,10 +1,7 @@
-package com.junka.mapache.data.model
+package com.junka.mapache.data.remote.model
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 data class Document(
     @SerializedName("anilist_id")
     val anilistId: Int,
@@ -56,4 +53,4 @@ data class Document(
     val trailerUrl: String?,
     @SerializedName("weekly_airing_day")
     val weeklyAiringDay: Int
-) : Parcelable
+)

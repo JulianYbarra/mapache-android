@@ -7,13 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.junka.mapache.R
 import com.junka.mapache.common.basicDiffUtil
 import com.junka.mapache.common.inflate
-import com.junka.mapache.common.loadUrl
-import com.junka.mapache.data.model.Document
+import com.junka.mapache.data.model.Anime
 import com.junka.mapache.databinding.ViewAnimeItemBinding
 
 class AnimeAdapter(
-    val listener : (anime : Document) -> Unit
-) : ListAdapter<Document, AnimeAdapter.ViewHolder>(
+    val listener : (anime : Anime) -> Unit
+) : ListAdapter<Anime, AnimeAdapter.ViewHolder>(
     basicDiffUtil { aOld, aNew -> aOld == aNew  }) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,8 +30,8 @@ class AnimeAdapter(
 
         private val binding = ViewAnimeItemBinding.bind(view)
 
-        fun bind(document: Document) = with(binding){
-            anime = document
+        fun bind(anime: Anime) = with(binding){
+            this.anime = anime
         }
     }
 

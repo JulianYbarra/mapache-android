@@ -1,18 +1,18 @@
-package com.junka.mapache.data.model
+package com.junka.mapache.data.remote.model
 
-
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 data class Titles(
     @SerializedName("en")
-    val en: String,
+    val en: String?,
     @SerializedName("fr")
     val fr: String?,
     @SerializedName("it")
     val it: String?,
     @SerializedName("jp")
     val jp: String?
-) : Parcelable
+)
+
+fun Titles.toTitle() : String{
+    return  en ?: jp ?: ""
+}

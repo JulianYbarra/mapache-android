@@ -23,6 +23,6 @@
         android:label="AnimeDetailFragment" >
         <argument
             android:name="anime"
-            app:argType="com.junka.mapache.data.model.Document" />
+            app:argType="com.junka.mapache.data.model.Anime" />
     </fragment>
 </navigation>
