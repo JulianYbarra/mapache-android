@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.junka.mapache.R
 import com.junka.mapache.common.launchAndCollect
 import com.junka.mapache.databinding.FragmentHomeBinding
@@ -17,7 +16,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     lateinit var homeState: HomeState
 
     private val animeAdapter: AnimeAdapter by lazy {
-        AnimeAdapter() { anime -> homeState.onAnimeClicked(anime) }
+        AnimeAdapter() { anime -> homeState.onAnimeClicked(anime.id) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

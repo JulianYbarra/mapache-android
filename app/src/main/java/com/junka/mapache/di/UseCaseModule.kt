@@ -2,6 +2,7 @@ package com.junka.mapache.di
 
 import com.junka.mapache.domain.repository.AnimeRepository
 import com.junka.mapache.domain.useCase.AnimeListUseCase
+import com.junka.mapache.domain.useCase.GetAnimeDetailUseCase
 import com.junka.mapache.domain.useCase.RefreshAnimeListUseCase
 import dagger.Module
 import dagger.Provides
@@ -16,4 +17,7 @@ object UseCaseModule {
 
     @Provides
     fun providesRefreshAnimeListUseCase(animeRepository: AnimeRepository) = RefreshAnimeListUseCase(animeRepository)
+
+    @Provides
+    fun providesGetAnimeDetailUseCase(animeRepository: AnimeRepository) = GetAnimeDetailUseCase(animeRepository)
 }

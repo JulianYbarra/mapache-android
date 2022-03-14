@@ -12,8 +12,8 @@ fun Fragment.buildHomeState(
 class HomeState(
     private val navController: NavController
 ) {
-    fun onAnimeClicked(anime : Anime){
-        val action = HomeFragmentDirections.actionHomeDestToAnimeDetailDest(anime)
+    fun onAnimeClicked(id : Int){
+        val action = HomeFragmentDirections.actionHomeDestToAnimeDetailDest(id)
         navController.navigate(action)
     }
 }

@@ -8,10 +8,12 @@ import androidx.navigation.fragment.findNavController
 import com.junka.mapache.R
 import com.junka.mapache.common.launchAndCollect
 import com.junka.mapache.databinding.FragmentAnimeDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AnimeDetailFragment : Fragment(R.layout.fragment_anime_detail) {
 
-    private val viewModel: AnimeDetailViewModel by viewModels()
+    private val viewModel : AnimeDetailViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

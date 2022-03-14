@@ -22,7 +22,7 @@
         android:name="com.junka.mapache.ui.anime.AnimeDetailFragment"
         android:label="AnimeDetailFragment" >
         <argument
-            android:name="anime"
-            app:argType="com.junka.mapache.data.model.Anime" />
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>
