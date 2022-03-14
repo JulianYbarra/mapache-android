@@ -34,5 +34,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun FragmentHomeBinding.updateUI(state: HomeViewModel.UiState) {
         loading = state.loading
         animes = state.animes
+        error = state.error?.let(homeState::errorToString)
     }
 }

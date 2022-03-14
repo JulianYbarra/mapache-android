@@ -6,8 +6,5 @@ class RefreshAnimeListUseCase(
     private val animeRepository: AnimeRepository
 ) {
 
-    suspend operator fun invoke() {
-        animeRepository.refreshAnimes()
-    }
-
+    suspend operator fun invoke() = animeRepository.refreshAnimes()
 }

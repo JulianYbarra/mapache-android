@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.Flow
 class AnimeListUseCase(
     private val animeRepository: AnimeRepository
 ) {
-    operator fun invoke() : Flow<List<Anime>> {
-        return animeRepository.getAnimes()
-    }
+    operator fun invoke(): Flow<List<Anime>> = animeRepository.getAnimes()
+
 }

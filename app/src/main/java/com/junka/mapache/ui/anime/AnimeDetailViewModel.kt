@@ -3,13 +3,12 @@ package com.junka.mapache.ui.anime
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.junka.mapache.common.Error
+import com.junka.mapache.common.toError
 import com.junka.mapache.data.model.Anime
 import com.junka.mapache.domain.useCase.GetAnimeDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,16 +20,17 @@ class AnimeDetailViewModel @Inject constructor(
 
     private val args = AnimeDetailFragmentArgs.fromSavedStateHandle(savedStateHandle)
 
-    class UiState(
+    data class UiState(
         val loading: Boolean = false,
-        val anime: Anime? = null
+        val anime: Anime? = null,
+        val error: Error? = null
     )
 
     init {
         viewModelScope.launch {
-            getAnimeDetailUseCase(args.id).collect {
-                _state.value = UiState(anime = it)
-            }
+            getAnimeDetailUseCase(args.id)
+                .catch { cause -> _state.update { it.copy(error = cause.toError()) } }
+                .collect { anime -> _state.update { UiState(anime = anime) } }
         }
     }
 
