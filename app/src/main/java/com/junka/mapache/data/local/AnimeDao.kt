@@ -14,11 +14,11 @@ interface AnimeDao {
     fun findById(id : Int) : Flow<Anime>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(anime : List<Anime>)
+    suspend fun insert(anime : List<Anime>)
 
     @Update
-    fun update(anime : Anime)
+    suspend fun update(anime : Anime)
 
     @Query("SELECT COUNT(id) FROM Anime")
-    fun count() : Int
+    suspend fun count() : Int
 }

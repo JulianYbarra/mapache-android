@@ -15,7 +15,7 @@ class DataSource(
 ) {
     val animes = localDataSource.getAnime().map { it.toBusinessModelList() }
 
-    suspend fun requestAnime() = withContext(Dispatchers.IO) {
+    suspend fun requestAnime() {
         if (localDataSource.isEmpty()){
             val animes = remoteDataSource.getAnimes().data.documents.toLocalModelList()
             localDataSource.insert(animes)
