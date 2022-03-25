@@ -2,8 +2,9 @@ package com.junka.mapache.di
 
 import android.app.Application
 import androidx.room.Room
-import com.junka.mapache.data.local.AnimeDao
 import com.junka.mapache.data.local.MapacheDataBase
+import com.junka.mapache.data.local.dao.AnimeDao
+import com.junka.mapache.data.local.dao.RemoteKeyDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,10 +21,15 @@ object DataBaseModule {
         return Room.databaseBuilder(
             application,
             MapacheDataBase::class.java, "mapache-db"
-        ).build()
+        ).fallbackToDestructiveMigration()
+            .build()
     }
 
     @Provides
     @Singleton
     fun providesAnimeDao(database: MapacheDataBase): AnimeDao = database.animeDao()
+
+    @Provides
+    @Singleton
+    fun providesRemotesKeyDao(database: MapacheDataBase): RemoteKeyDao = database.remoteKeyDao()
 }

@@ -1,5 +1,6 @@
-package com.junka.mapache.data.local
+package com.junka.mapache.data.local.dao
 
+import androidx.paging.PagingSource
 import androidx.room.*
 import com.junka.mapache.data.local.model.Anime
 import kotlinx.coroutines.flow.Flow
@@ -21,4 +22,10 @@ interface AnimeDao {
 
     @Query("SELECT COUNT(id) FROM Anime")
     suspend fun count() : Int
+
+    @Query("SELECT * FROM Anime WHERE title LIKE :title ORDER BY score DESC")
+    fun animeByTitle(title : String) : PagingSource<Int, Anime>
+
+    @Query("DElETE from Anime")
+    suspend fun clear()
 }

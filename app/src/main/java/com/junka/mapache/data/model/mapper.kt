@@ -15,6 +15,6 @@ fun Document.toLocalModel() = AnimeLocal(id,bannerImage,coverImage,descriptions.
 
 fun List<Document>.toLocalModelList() = map { it.toLocalModel() }
 
-fun AnimeLocal.toBusiness() = Anime(id, bannerImage, coverImage, descriptions, title, endDate, episodeDuration, episodesCount, format, nsfw, score, seasonPeriod, seasonYear, startDate, status, trailerUrl, weeklyAiringDay)
+fun AnimeLocal.toBusiness() = Anime(id, bannerImage ?: "", coverImage, descriptions, title, endDate, episodeDuration, episodesCount, format, nsfw, score, seasonPeriod, seasonYear, startDate, status, trailerUrl, weeklyAiringDay)
 
 fun List<AnimeLocal>.toBusinessModelList() = map { it.toBusiness() }

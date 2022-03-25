@@ -7,6 +7,10 @@ class RemoteDataSourceImp(
 ) : RemoteDataSource {
 
     override suspend fun getAnimes(): AniResult {
-        return  aniService.getAnimes()
+        return aniService.getAnimes()
+    }
+
+    override suspend fun getAnimes(query: String, page: Int, pageSize: Int): AniResult {
+        return aniService.getAnimes(query,page,pageSize)
     }
 }

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class Anime(
     @PrimaryKey val id: Int,
-    val bannerImage: String,
+    val bannerImage: String?,
     val coverImage: String,
     val descriptions: String,
     val title : String,

@@ -6,6 +6,7 @@
     <data>
         <import type="java.util.List"/>
         <import type="com.junka.mapache.data.model.Anime"/>
+        <import type="androidx.paging.PagingData"/>
 
         <variable
             name="loading"
@@ -13,7 +14,7 @@
 
         <variable
             name="animes"
-            type="List&lt;Anime>" />
+            type="PagingData&lt;Anime>" />
 
         <variable
             name="error"
@@ -45,7 +46,6 @@
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:items="@{animes}"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:visible="@{ error == null }" />

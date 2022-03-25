@@ -1,9 +1,10 @@
 package com.junka.mapache.di
 
 import com.junka.mapache.data.DataSource
-import com.junka.mapache.data.local.AnimeDao
+import com.junka.mapache.data.local.dao.AnimeDao
 import com.junka.mapache.data.local.LocalDataSource
 import com.junka.mapache.data.local.LocalDataSourceImp
+import com.junka.mapache.data.local.MapacheDataBase
 import com.junka.mapache.data.remote.AniService
 import com.junka.mapache.data.remote.RemoteDataSource
 import com.junka.mapache.data.remote.RemoteDataSourceImp
@@ -32,7 +33,7 @@ object DataSourceModule {
 
     @Provides
     @Singleton
-    fun provideLocalDataSource(animeDao: AnimeDao) : LocalDataSource{
-        return LocalDataSourceImp(animeDao)
+    fun provideLocalDataSource(database : MapacheDataBase,animeDao: AnimeDao) : LocalDataSource{
+        return LocalDataSourceImp(database,animeDao)
     }
 }

@@ -10,4 +10,6 @@ class AnimeRepository(
     fun getAnimeById(id : Int) = dataSource.getAnimeById(id)
 
     suspend fun refreshAnimes() = dataSource.requestAnime()
+
+    fun getAnime(query : String) = dataSource.getSearchResultStream(query)
 }
