@@ -1,9 +1,5 @@
-package com.junka.mapache.data.model
+package com.junka.mapache.domain.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
-@Parcelize
 data class Anime(
     val id: Int,
     val bannerImage: String,
@@ -22,4 +18,4 @@ data class Anime(
     val status: Int,
     val trailerUrl: String?,
     val weeklyAiringDay: Int
-) : Parcelable
+)

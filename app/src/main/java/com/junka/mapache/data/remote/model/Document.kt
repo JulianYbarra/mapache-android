@@ -6,7 +6,7 @@ data class Document(
     @SerializedName("anilist_id")
     val anilistId: Int,
     @SerializedName("banner_image")
-    val bannerImage: String,
+    val bannerImage: String?,
     @SerializedName("cover_color")
     val coverColor: String?,
     @SerializedName("cover_image")

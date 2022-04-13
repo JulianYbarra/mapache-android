@@ -3,7 +3,7 @@ package com.junka.mapache.data
 import com.junka.mapache.common.Error
 import com.junka.mapache.common.tryCall
 import com.junka.mapache.data.local.LocalDataSource
-import com.junka.mapache.data.model.*
+import com.junka.mapache.domain.model.*
 import com.junka.mapache.data.remote.RemoteDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -12,7 +12,8 @@ class DataSource(
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource
 ) {
-    val animes = localDataSource.getAnime().map { it.toBusinessModelList() }
+
+    val animes = localDataSource.getAnime().map { it.toDomainModel() }
 
     suspend fun requestAnime() : Error? = tryCall {
         if (localDataSource.isEmpty()){
@@ -21,5 +22,5 @@ class DataSource(
         }
     }
 
-    fun getAnimeById(id : Int): Flow<Anime> = localDataSource.getAnimeById(id).map { it.toBusiness() }
+    fun getAnimeById(id : Int): Flow<Anime> = localDataSource.getAnimeById(id).map { it.toDomainModel() }
 }

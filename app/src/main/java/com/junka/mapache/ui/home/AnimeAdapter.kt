@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.junka.mapache.R
 import com.junka.mapache.common.basicDiffUtil
 import com.junka.mapache.common.inflate
-import com.junka.mapache.data.model.Anime
+import com.junka.mapache.domain.model.Anime
 import com.junka.mapache.databinding.ViewAnimeItemBinding
 
 class AnimeAdapter(

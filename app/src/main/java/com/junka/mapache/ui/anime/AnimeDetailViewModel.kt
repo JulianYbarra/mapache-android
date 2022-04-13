@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.junka.mapache.common.Error
 import com.junka.mapache.common.toError
-import com.junka.mapache.data.model.Anime
+import com.junka.mapache.domain.model.Anime
 import com.junka.mapache.domain.useCase.GetAnimeDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
