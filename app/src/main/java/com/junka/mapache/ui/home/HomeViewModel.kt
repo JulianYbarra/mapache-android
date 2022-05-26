@@ -22,7 +22,6 @@ class HomeViewModel @Inject constructor(
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     init {
-        refresh()
         viewModelScope.launch {
             animeListUseCase()
                 .catch { cause -> _state.update { it.copy(error = cause.toError()) } }
@@ -30,14 +29,11 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun refresh() {
+    fun refresh() {
         viewModelScope.launch {
-
-            _state.update { UiState(loading = true) }
-
-            refreshAnimeListUseCase().also { error ->
-                _state.update { it.copy(error = error) }
-            }
+            _state.update { _state.value.copy(loading = true) }
+            val error = refreshAnimeListUseCase()
+            _state.update { it.copy(error = error) }
         }
     }
 
