@@ -13,5 +13,5 @@ data class Descriptions(
     val jp: String?)
 
 fun Descriptions.toDescription() : String{
-    return en ?: jp ?: ""
+    return en
 }
